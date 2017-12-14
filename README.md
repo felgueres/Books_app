@@ -1,2 +1,1 @@
-"# Books_app" 
-"# weatherAppReact" 
+## React-Redux for a Book selector app
