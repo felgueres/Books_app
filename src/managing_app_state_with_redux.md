@@ -1,6 +1,8 @@
-## Notes on Redux
+## Managing App State with Redux
+
 A Reducer is a function that returns a piece of the application state.
 Because the application can have many pieces of state, you can have many reducers.
+
 Ex. List of Books and Currently Selected Book
 
 Remember that the application state is represented by a JS object.
@@ -31,9 +33,6 @@ export default class BookDetail extends Component{
 }
 
 ```
-
-
-
 A Container is a React component that has a direct connection to the state managed by Redux.
 
 Which components do you promote to containers?
