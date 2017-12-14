@@ -17,6 +17,23 @@ In this case you may have a Books Reducer that produces the values (in the key-v
 An application is composed by the views (React) and the state (redux).
 To use the library the merges React and Redux, you define a Component as a container instead a component.
 
+### Boilerplate for a component
+```javascript
+
+import React, { Component } from 'react';
+
+export default class BookDetail extends Component{
+  render(){
+    return (
+      <div>Book Detail!</div>
+    );
+  }
+}
+
+```
+
+
+
 A Container is a React component that has a direct connection to the state managed by Redux.
 
 Which components do you promote to containers?
@@ -63,3 +80,137 @@ Ex:
 bindActionCreators({selectBook: selectBook}, dispatch) -- says, alright, I'm gonna take this actions, and dispatch it through a funnel to all reducers.
 
 mapDispatchProps(dispatch) --> Anything returned from this function will end up as props on the BookList container.
+
+Passing Action to reducers
+--------------------------
+
+All reducers get two arguments, current state and action.
+
+export default function(state, action){}
+
+- Note that the state passed is not the application state but only the state for what the reducer is responsible for.
+
+- A reducer is going to get called whenever an action is dispatched by the app. That means there are actions that are not relevant to all reducers at all times.
+
+- So what you do is that you handle cases is to define a base case to pass the current state back through.
+
+```Javascript
+
+export default function(state, action){
+  return state
+}
+```
+
+Then add the second state, which is the case when you do care about the action. Most redux reducers are setup with javascript switch statements where the switch statement is going to look at the action's type and if you care about it then you do something.
+
+```Javascript
+
+export default function(state, action){
+
+  switch(action.type){
+    case 'BOOK_SELECTED':
+      return action.payload;
+  }
+
+  return state
+}
+```
+
+Finally, you need to handle the case where the user first boots the app up. Because this would return an undefined state at the beginning, Redux doesn't like it, you must return a non-undefined value.
+
+```Javascript
+
+export default function(state, action){
+
+  switch(action.type){
+    case 'BOOK_SELECTED':
+      return action.payload;
+  }
+
+  return state
+}
+```
+
+To handle this, you define the state as null.
+
+```Javascript
+
+export default function(state=null, action){
+
+  switch(action.type){
+  case 'BOOK_SELECTED':
+      return action.payload;
+  }
+
+  return state
+}
+```
+Note this is ES6 syntax, which is saying, if the state doesn't come with anything, then set it as null, much like PYPYPYTHON.
+
+Remember, the reducers must be connected to the combined_reducers in index.js
+
+```javascript
+import { combineReducers } from 'redux';
+import BooksReducer from './reducer_books';
+import ActiveBook from './reducer_active_book';
+
+const rootReducer = combineReducers({
+  books: BooksReducer,
+  activeBook: ActiveBook
+});
+
+export default rootReducer;
+```
+
+Any key that you pass to the combineReducers, will be in the Application State.
+
+Boiler plate for a smart component or container
+```javascript
+
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+class BookDetail extends Component{
+  render(){
+    return (
+      <div>Book Detail!</div>
+    );
+  }
+}
+
+function mapStateToProps(state){
+  return {
+    book:state.activeBook
+  };
+}
+
+export default connect(mapStateToProps)(BookDetail);
+```
+
+Summary:
+- Reducers are responsible for the application state.
+- The state of a component and the application state have absolutely nothing to do with each other. They could've been called differently but creators decided to go with same name.
+- Reducers get tied together in the combineReducers method in the reducers/index.js
+- For each key in the combined reducers object, you assign one reducer which is responsible for creating that piece of state.
+For example:
+```javascript
+const rootReducer=combineReducers({
+  books: BooksReducer,
+  activeBook: ActiveBook
+  });
+```
+- The reducers, which are nothing but functions, will be responsible of creating the values for the keys in the application object
+- The application state is a plain Javascript object.
+- The reducers are in charge of forming and changing pieces of the application state. They do this through the use of actions:
+- Whenever an action is dispatched, it flows through all the reducers in the application and each reducer has the option to return a piece of the state, based on the type of action that was received.
+- An action creator are simple functions that return an action.
+- Actions are JS objects with a type of action and a payload (payload is optional).
+
+WorkFlow of the application:
+- 1. You start with an action triggered either by the user or indirectly.
+- 2. Then it triggers an Action Creator.
+- 3. Action Creator returns an action saying the type of action and optionally a payload.
+- 4. The Action is dispatched to all reducers.
+- 5. Based on the type, some reducers will change the state of the application, some of them will not care and return the current state again.
+- 6. The new state is assembled and ready to pass to the containers (components that communicate to redux or the application state).
+- 7. On notification, containers rerender with the new props.
