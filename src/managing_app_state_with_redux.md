@@ -213,3 +213,7 @@ WorkFlow of the application:
 - 5. Based on the type, some reducers will change the state of the application, some of them will not care and return the current state again.
 - 6. The new state is assembled and ready to pass to the containers (components that communicate to redux or the application state).
 - 7. On notification, containers rerender with the new props.
+
+Finalword:
+With Redux, components are only responsible of rendering data, not fetching it. They could tell redux to go get it but not themselves.
+React components do not make Ajax rejects.
