@@ -6,14 +6,14 @@ class BookDetail extends Component{
 
     // Add this line to avoid trying to get a property from an object that has not been defined, aka, error.
     if(!this.props.book){
-      return <div>Select a book to get started.</div>
+      return <div>Select an asset to get started.</div>
     }
 
     return (
       <div>
-        <h3>Details for this book:</h3>
-        <div>Title:  {this.props.book.title}</div>
-        <div>Pages:  {this.props.book.pages}</div>
+        <h4>Performance Over IE Forecast</h4>
+        <div>Name:  {this.props.book.title}</div>
+        <div>Characteristics:  {this.props.book.pages}</div>
 
       </div>
     );
