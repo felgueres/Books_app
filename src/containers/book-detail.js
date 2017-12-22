@@ -11,9 +11,10 @@ class BookDetail extends Component{
 
     return (
       <div>
-        <h4>Performance Over IE Forecast</h4>
+        <h3 className='subtitles'>Asset Characteristics</h3>
         <div>Name:  {this.props.book.title}</div>
-        <div>Characteristics:  {this.props.book.pages}</div>
+        <div>DC Capacity:  {this.props.book.dc} kW</div>
+        <div>AC Capacity:  {this.props.book.ac} kWac</div>
 
       </div>
     );

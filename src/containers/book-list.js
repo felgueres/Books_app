@@ -19,13 +19,13 @@ class BookList extends Component {
   render() {
     return (
       <ul className='list-group col-sm-3'>
-        <li className="list-group-item"><strong>Assets in Portfolio</strong></li>
+        <li className="list-group-item "><strong>Assets in Portfolio</strong></li>
         {this.renderList()}
       </ul>
     )
   }
 }
-function mapStateToPops(state){
+function mapStateToProps(state){
   // Whatever is return will show up as props
   // inside of BookList
   return {
@@ -43,4 +43,4 @@ function mapDispatchToProps(dispatch){
 // Promote BookList from a component to a container - it needs to know
 // about this new dipatch method, SelectBook. Make it available
 // as a prop.
-export default connect(mapStateToPops, mapDispatchToProps)(BookList);
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);

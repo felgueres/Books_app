@@ -20,13 +20,8 @@
   margin: 20px;
 }
 
-#Enertis-Logo{
-  width:200px;
-  margin: 30px 0px 20px 0px;
-}
-
-#Right-btn{
-  margin-left:10px;
+svg {
+  padding-top:50px;
 }
 
 .suptitle {
@@ -47,11 +42,71 @@
 
 .suptitle-heading {
   font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
   color: #003041;
   text-align: left
 }
 
-
 .suptitle .container {
   max-width: 40rem;
+}
+
+/* Containers */
+
+.list-container {
+  height: 175px;
+  background-color: #fff;
+}
+
+.description-container {
+  height: 175px;
+  background-color: #fff;
+}
+
+/* Ids */
+
+#Enertis-Logo{
+  width:200px;
+  margin: 30px 0px 20px 0px;
+}
+
+#Right-btn{
+  margin-left:10px;
+}
+
+.subtitles {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.commentary-title {
+    display: block;
+    font-size: 1.25em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #003041;
+}
+
+.commentary{
+    display: block;
+    font-size: .75em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    color: #003041;
+}
+
+.right-col-text{
+  padding: 50px 0px 0px 50px;
 }
