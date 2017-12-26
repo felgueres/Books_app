@@ -8,7 +8,6 @@ class PerformanceHorizontalOptimized extends Component{
     if(!this.props.book){
       return <div></div>
     }
-
   	return (
 			<div>
 				<div>
