@@ -18,10 +18,12 @@ class BookList extends Component {
 
   render() {
     return (
-      <ul className='list-group col-sm-3'>
-        <li className="list-group-item "><strong>Assets in Portfolio</strong></li>
-        {this.renderList()}
-      </ul>
+      <div  className='list-container'>
+        <ul className='list-group col-sm-3'>
+          <li className="list-group-item "><strong>Assets in Portfolio</strong></li>
+          {this.renderList()}
+        </ul>
+      </div>
     )
   }
 }

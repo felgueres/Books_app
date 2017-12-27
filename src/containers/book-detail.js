@@ -10,7 +10,7 @@ class BookDetail extends Component{
     }
 
     return (
-      <div>
+      <div  className='jumbotron'>
         <h3 className='subtitles'>Asset Characteristics</h3>
         <div>Name:  {this.props.book.title}</div>
         <div>DC Capacity:  {this.props.book.dc} kW</div>

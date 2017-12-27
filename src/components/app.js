@@ -3,8 +3,6 @@ import BookDetail from '../containers/book-detail';
 import BookList from '../containers/book-list';
 import NavBar from './navbar';
 import PerformanceHorizontal from '../containers/performance-horizontal';
-import PerformanceHorizontalOptimized from '../containers/performance-horizontal-optimized';
-
 import NavSelection from './navselection';
 
 export default class App extends Component {
@@ -17,17 +15,16 @@ export default class App extends Component {
           <NavSelection />
         </div>
 
-        <div className='list-container'>
+        <div>
           <BookList />
         </div>
 
-        <div className='jumbotron'>
+        <div>
           <BookDetail />
         </div>
 
         <div>
           <PerformanceHorizontal />
-          <PerformanceHorizontalOptimized />
         </div>
       </div>
     );
