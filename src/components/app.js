@@ -1,4 +1,7 @@
+// Library Dependencies
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// Components
 import BookDetail from '../containers/book-detail';
 import BookList from '../containers/book-list';
 import NavBar from './navbar';
@@ -9,21 +12,11 @@ export default class App extends Component {
   render() {
     return (
       <div>
-
-        <div>
-          <NavBar />
-          <NavSelection />
-        </div>
-
+        <NavBar />
+        <NavSelection />
         <div>
           <BookList />
-        </div>
-
-        <div>
           <BookDetail />
-        </div>
-
-        <div>
           <PerformanceHorizontal />
         </div>
       </div>
